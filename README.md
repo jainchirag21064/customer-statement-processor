@@ -25,5 +25,5 @@ The application can be accessed at `http://localhost:8081/customerstatement/v1/p
 Open API specification can be accessed at below location
 `http://localhost:8081/swagger-ui.html`
 
-##Assumption/Improvement
+### Assumption/Improvement ###
 The Customer Statement Request model is not validated which can be done using the @Valid annotation and definfing respective validation on the attribute.
