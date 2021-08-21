@@ -48,23 +48,23 @@ public class StatementValidationProcessor {
 
   private List<ErrorRecord> validateEndBalance(List<StatementRecord> statementRecords) {
     return statementRecords.stream().
-        filter(record -> !record.getStartBalance().add(record.getMutation())
-            .equals(record.getEndBalance()))
+        filter(statementRecord -> !statementRecord.getStartBalance().add(statementRecord.getMutation())
+            .equals(statementRecord.getEndBalance()))
         .map(this::createErrorRecord).distinct()
         .collect(Collectors.toList());
   }
 
   private List<ErrorRecord> validateReferenceNotUnique(List<StatementRecord> statementRecords) {
     return statementRecords
-        .stream().filter(record -> Collections.frequency(statementRecords, record) > 1)
+        .stream().filter(statementRecord -> Collections.frequency(statementRecords, statementRecord) > 1)
         .map(this::createErrorRecord).distinct()
         .collect(Collectors.toList());
   }
 
-  private ErrorRecord createErrorRecord(StatementRecord record) {
+  private ErrorRecord createErrorRecord(StatementRecord statementRecord) {
     final String logMethod = "createErrorRecord(StatementRecord):ErrorRecord Error : %s";
-    ErrorRecord errorRecord = ErrorRecord.builder().reference(record.getReference())
-        .accountNumber(record.getAccountNumber()).build();
+    ErrorRecord errorRecord = ErrorRecord.builder().reference(statementRecord.getReference())
+        .accountNumber(statementRecord.getAccountNumber()).build();
     log.error(String.format(logMethod, errorRecord));
     return errorRecord;
   }

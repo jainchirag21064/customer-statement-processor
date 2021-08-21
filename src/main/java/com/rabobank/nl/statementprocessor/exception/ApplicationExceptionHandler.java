@@ -32,7 +32,7 @@ public class ApplicationExceptionHandler {
     log.error(String.format(logMethod, exception.getCause()));
 
     StatementResult statementResultBadRequest = StatementResult.builder().result("BAD_REQUEST")
-        .errorRecords(Collections.EMPTY_LIST).build();
+        .errorRecords(Collections.emptyList()).build();
 
     return new ResponseEntity(statementResultBadRequest, HttpHeaders.EMPTY, HttpStatus.BAD_REQUEST);
   }
@@ -52,7 +52,7 @@ public class ApplicationExceptionHandler {
         null != exception.getCause() ? exception.getCause() : exception.getMessage()));
 
     StatementResult statementResultBadRequest = StatementResult.builder()
-        .result("INTERNAL_SERVER_ERROR").errorRecords(Collections.EMPTY_LIST).build();
+        .result("INTERNAL_SERVER_ERROR").errorRecords(Collections.emptyList()).build();
 
     return new ResponseEntity(statementResultBadRequest, HttpHeaders.EMPTY,
         HttpStatus.INTERNAL_SERVER_ERROR);

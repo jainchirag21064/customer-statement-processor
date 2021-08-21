@@ -1,7 +1,7 @@
-# Rabobank Customer Statement Processor
+# Customer Statement Processor
 
 ### Summary ###
-Rabobank receives monthly deliveries of customer statement records. This information is delivered in JSON format. 
+Bank receives monthly deliveries of customer statement records. This information is delivered in JSON format. 
 These records need to be validated. based on below conditions
     * all transaction references should be unique
     * end balance needs to be validated
